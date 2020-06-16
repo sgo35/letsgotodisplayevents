@@ -1,0 +1,34 @@
+export interface Bdevent {
+  Horodateur: string;
+  asso_email: string;
+  name: string;
+  phone: string;
+  function: string;
+  event_category: string;
+  event_object: string;
+  event_start: string;
+  event_end: string;
+  event_location: string;
+  ticket_type: string;
+  ticket_price: string;
+  ticket_link: string;
+  asso_contact: string;
+  ticket_contact: string;
+  ticket_end: string;
+  event_email: string;
+  website: string;
+  facebook: string;
+  description_long: string;
+  description_short: string;
+  public_category: string;
+  public_affluence: string;
+  public_accessibility: string;
+  language: string;
+  event_assignment: string;
+  image: string;
+  broadcast_support: string;
+  broadcast_start: string;
+  event_share: string;
+  message: string;
+  Confirmation: string;
+}

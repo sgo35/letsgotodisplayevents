@@ -1,0 +1,25 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "concert";
+  src: url("app/fonts/ConcertOne-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "pt";
+  src: url("app/fonts/PTSansCaption-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ptBold";
+  src: url("app/fonts/PTSansCaption-Bold.ttf") format("truetype");
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: transparent;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

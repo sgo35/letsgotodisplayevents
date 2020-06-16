@@ -1,0 +1,96 @@
+<div style="padding: 13px;" class="event">
+  <mat-spinner *ngIf="events.length === 0"></mat-spinner>
+  <!-- <div
+    gdAreas="header header | side content | footer footer"
+    gdGap="16px"
+    gdRows="auto auto auto"
+  > -->
+  <div
+    fxLayout="row wrap"
+    fxLayout.lt-sm="column"
+    fxLayoutGap="16px"
+    fxLayoutAlign="flex-start"
+  >
+    <mat-card
+      *ngFor="let event of events; let index = index"
+      style="margin-top: 10px;"
+      fxFlex="0 1 calc(49% - 8px)"
+      fxFlex.lt-md="0 1 calc(50% - 8px)"
+      fxFlex.lt-sm="100%"
+    >
+      <mat-card-header class="event_header" gdArea="header">
+        <mat-card-title
+          class="animate__animated animate__pulse animate__delay-2s event_title"
+        >
+          <span class="event_start">
+            {{
+              event.event_start | dateReverse | date: "EEEE d MMMM" | titlecase
+            }}
+          </span>
+          <span class="event_object">
+            {{ event.event_object }}
+          </span>
+        </mat-card-title>
+        <mat-card-subtitle *ngIf="event.asso_contact"
+          >Renseignement : {{ event.asso_contact }} - {{ event.event_email }}
+        </mat-card-subtitle>
+        <mat-card-subtitle
+          *ngIf="event.ticket_type === 'les tarifs (cf. question suivante)'"
+          >Tarif : {{ event.ticket_price }}
+        </mat-card-subtitle>
+        <mat-card-subtitle
+          *ngIf="event.ticket_type === 'que l\'événement est gratuit'"
+          >C'est GRATUIT !
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="event.ticket_contact || event.ticket_end"
+          >Réservations
+          <span *ngIf="event.ticket_contact">
+            : {{ event.ticket_contact }}
+          </span>
+          <span *ngIf="event.ticket_end">
+            avant le&nbsp;
+            {{
+              event.ticket_end | dateReverse | date: "EEEE d MMMM" | titlecase
+            }}
+          </span>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img
+          *ngIf="event.image"
+          [class]="
+            'animate__animated animate__pulse animate__delay-' +
+            (4 + index) +
+            's'
+          "
+          gdArea="side"
+          style="height: 30%; float: left; padding: 0px 10px 10px 10px;"
+          [src]="event.image | thumbnail | safe: 'resourceUrl'"
+        />
+        <div
+          *ngIf="event.description_long; else description_short"
+          gdArea="content"
+        >
+          <p class="event_description">
+            {{ event.description_long }}
+          </p>
+        </div>
+        <ng-template #description_short>
+          <p class="event_description">
+            {{ event.description_short }}
+          </p>
+        </ng-template>
+        <!-- <p>url : {{ event.image }}</p> -->
+        <!-- <iframe
+        id="image"
+        style="border: none;"
+        height="400px"
+        [src]="event.image | preview | safe: 'resourceUrl'"
+      ></iframe> -->
+      </mat-card-content>
+      <!-- <mat-card-actions>
+      <button mat-button>Acheter billet</button>
+    </mat-card-actions> -->
+    </mat-card>
+  </div>
+</div>
